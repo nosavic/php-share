@@ -1,0 +1,17 @@
+# Prevent direct access to the .env file
+
+<Files ".env">
+Order allow,deny
+Deny from all
+</Files>
+
+# Optional: Disable directory listing
+
+Options -Indexes
+
+# Optional: Restrict access to other sensitive files
+
+<FilesMatch "\.(htaccess|htpasswd|ini|log|sh|bak|sql|json|xml)$">
+Order allow,deny
+Deny from all
+</FilesMatch>

@@ -149,3 +149,159 @@ p {
 #uploadLoader {
     display: none;
 }
+
+
+.expandable-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.folder-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+    width: 100%;
+}
+
+.folder-container::-webkit-scrollbar {
+    height: 0px;
+    width: 2px;
+}
+
+.folder-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 1px;
+}
+
+.folder-container::-webkit-scrollbar-thumb {
+    background: #42424280;
+    border-radius: 1px;
+}
+
+.folder-container::-webkit-scrollbar-thumb:hover {
+    background: green;
+}
+
+.folder {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.folder h3 {
+    margin: 0 0 10px;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.folder ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.folder ul li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0;
+    font-size: 1rem;
+    color: #555;
+}
+
+.folder ul li strong {
+    color: #000;
+}
+
+.delete-btn {
+    background-color: #ff6b6b;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    padding: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+}
+
+.delete-btn:hover {
+    background-color: #d9534f;
+}
+
+.form-section {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    max-width: 600px;
+    width: 100%;
+}
+
+.form-section label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-section input {
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.form-section button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.form-section button:hover {
+    background-color: #45a049;
+}
+
+.spinner {
+    display: none;
+    width: 30px;
+    height: 30px;
+    border: 4px solid #ddd;
+    border-top: 4px solid #4CAF50;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: auto;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@media (max-width: 768px) {
+    .folder-container {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}

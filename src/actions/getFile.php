@@ -3,7 +3,8 @@ require_once __DIR__ . '/../helpers/dotenv.php';
 
 loadEnv();
 
-function getFolder($token)
+
+function getFile($token, $folderPath)
 {
     $driveId = getEnvVar('MICROSOFT_DRIVE_ID');
     $USERS = getEnvVar('USERS');
@@ -11,7 +12,7 @@ function getFolder($token)
         throw new Exception("Drive ID is missing in environment variables.");
     }
 
-    $url = "https://graph.microsoft.com/v1.0/drives/{$driveId}/root:/{$USERS}:/children";
+    $url = "https://graph.microsoft.com/v1.0/drives/{$driveId}/root:/{$USERS}/{$folderPath}:/children";
 
     $headers = [
         "Authorization: Bearer {$token}",
@@ -27,7 +28,7 @@ function getFolder($token)
 
     if (curl_errno($ch)) {
         curl_close($ch);
-        throw new Exception('Error retrieving folder contents: ' . curl_error($ch));
+        throw new Exception('Error retrieving file contents: ' . curl_error($ch));
     }
 
     $statusCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
@@ -35,6 +36,6 @@ function getFolder($token)
     if ($statusCode == 200) {
         return json_decode($response, true);
     } else {
-        throw new Exception('Error retrieving folder contents: ' . $response);
+        throw new Exception('Error retrieving file contents: ' . $response);
     }
 }
